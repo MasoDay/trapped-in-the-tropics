@@ -13,6 +13,10 @@ class Level:
         terrain_layout = import_csv_layout(level_data["terrain"])
         self.terrain_sprites = self.create_tile_group(terrain_layout, "terrain")
 
+        # Grass setup
+        grass_layout = import_csv_layout(level_data["grass"])
+        self.grass_sprites = self.create_tile_group(grass_layout, "grass")
+
     def create_tile_group(self, layout, type):
         sprite_group = pygame.sprite.Group()
 
@@ -28,11 +32,25 @@ class Level:
                             )
                         tile_surface = terrain_tile_list[int(value)]
                         sprite = StaticTile(tile_size, x, y, tile_surface)
-                        sprite_group.add(sprite)
+
+                    if type == "grass":
+                        grass_tile_list = import_cut_graphics(
+                            "../pirate-jump/assets/2 - Level/graphics/decoration/grass/grass.png"
+                            )
+                        tile_surface = grass_tile_list[int(value)]
+                        sprite = StaticTile(tile_size, x, y, tile_surface)
+
+                    sprite_group.add(sprite)
 
         return sprite_group
 
     def run (self):
-        # will start running the level
+        # Will start running the level
+
+        # Terrain
         self.terrain_sprites.draw(self.display_surface)
         self.terrain_sprites.update(self.world_shift)
+
+        # Grass
+        self.grass_sprites.draw(self.display_surface)
+        self.grass_sprites.draw(self.world_shift)

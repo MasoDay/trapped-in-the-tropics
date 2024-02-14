@@ -13,3 +13,7 @@ class StaticTile(Tile):
     def __init__(self, size, x, y, surface):
         super().__init__(size, x, y)
         self.image = surface
+
+class Crate(StaticTile):
+    def __init__(self, size, x, y):
+        super().__init__(size, x, y, pygame.image.load("../pirate-jump/assets/2 - Level/graphics/terrain/crate.png").convert_alpha())

@@ -32,7 +32,7 @@ def import_cut_graphics(path):
         for column in range(tile_number_x):
             x = column * tile_size
             y = row * tile_size
-            new_surface = pygame.Surface((tile_size, tile_size))
+            new_surface = pygame.Surface((tile_size, tile_size), flags = pygame.SRCALPHA)
             new_surface.blit(surface, (0, 0), pygame.Rect(x, y, tile_size, tile_size))
             cut_tiles.append(new_surface)
 

@@ -10,7 +10,7 @@ class Player(pygame.sprite.Sprite):
         # Logic for animations and selection for each series of stills
         self.frame_index = 0
         self.animation_speed = 0.15
-        # self.image = self.animations["idle"][self.frame_index]
+        self.image = self.animations["idle"][self.frame_index]
         self.rect = self.image.get_rect(topleft = position)
 
         # Dust particles and animation timing
